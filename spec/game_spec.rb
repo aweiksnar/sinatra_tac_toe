@@ -11,5 +11,4 @@ describe "The tic tac toe game" do
     get "/"
     expect(last_response).to be_ok
   end
-
 end
