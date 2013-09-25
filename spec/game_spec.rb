@@ -1,8 +1,3 @@
-ENV['RACK_ENV'] = 'test'
-
-require "./game.rb"
-require "rspec"
-require "rack/test"
 require "spec_helper"
 
 describe "The tic tac toe game" do
