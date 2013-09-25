@@ -6,8 +6,7 @@ require "rack/test"
 require "spec_helper"
 
 describe "The tic tac toe game" do
-
-include Rack::Test::Methods
+  include Rack::Test::Methods
 
   def app
     Sinatra::Application
