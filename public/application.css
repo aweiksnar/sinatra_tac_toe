@@ -16,8 +16,6 @@
   background-color: grey;
   height: 150px;
   width: 150px;
-  /*float: left;*/
-  /*display: block;*/
   margin-left: auto;
   margin-right: auto;
  }
@@ -47,7 +45,7 @@
 .o-filled{
   margin-left: auto;
   margin-right: auto;
-  background-image: url(/o.png);
+  background-image: url(o.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100px
@@ -56,7 +54,7 @@
 .x-filled {
   margin-left: auto;
   margin-right: auto;
-  background-image: url(/x.png);
+  background-image: url(x.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100px
