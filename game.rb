@@ -31,18 +31,27 @@ class BestComputerMove
 
   def fetch_best_move
     if @move_num == 1
-      FirstTurn.new(@board).get_best_move
+      FirstComputerTurn.new(@board).return_best_move
     end
   end
 end
 
-class FirstTurn
-
+class FirstComputerTurn
   def initialize(board_hash)
     @board = board_hash
   end
 
-  def get_best_move
+  def return_best_move
     @board[:space1] ? 5 : 1
+  end
+end
+
+class SecondComputerTurn
+  def initialize(board_hash)
+    @board = board_hash
+  end
+
+  def return_best_move
+
   end
 end

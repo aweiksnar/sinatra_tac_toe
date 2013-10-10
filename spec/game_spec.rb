@@ -36,22 +36,36 @@ describe BestComputerMove do
   end
 end
 
-describe FirstTurn do
-  let(:first_turn_middle) {FirstTurn.new({:space5 => "user"})}
-  let(:first_turn_top_left) {FirstTurn.new({:space1 => "user"})}
+describe FirstComputerTurn do
+  let(:first_turn_middle) {FirstComputerTurn.new({:space5 => "user"})}
+  let(:first_turn_top_left) {FirstComputerTurn.new({:space1 => "user"})}
 
   it "should exist" do
-    expect(:first_turn_middle).not_to be_nil
-    expect(:first_turn_top_left).not_to be_nil
+    expect(first_turn_middle).not_to be_nil
+    expect(first_turn_top_left).not_to be_nil
   end
 
-  describe "#get_best_move" do
+  describe "#return_best_move" do
     it "top left if its open" do
-      expect(first_turn_middle.get_best_move).to eq(1)
+      expect(first_turn_middle.return_best_move).to eq(1)
     end
 
     it "middle if the top_left is filled" do
-      expect(first_turn_top_left.get_best_move).to eq(5)
+      expect(first_turn_top_left.return_best_move).to eq(5)
+    end
+  end
+end
+
+describe SecondComputerTurn do
+  let(:second_turn) {SecondComputerTurn.new({})}
+
+  it "should exist" do
+    expect(second_turn).not_to be_nil
+  end
+
+  describe "#return_best_move" do
+    it "shoudld exist" do
+      expect(second_turn).to respond_to(:return_best_move)
     end
   end
 end
