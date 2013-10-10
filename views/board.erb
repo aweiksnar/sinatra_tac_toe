@@ -4,14 +4,14 @@
       <div class="row">
     <% end %>
 
-    <% if session["space#{id}"] == "user_move" %>
+    <% if session["space#{id}"] == "user" %>
       <div class="space x-filled" id="<%= id %>"></div>
-    <% elsif session["space#{id}"] == "comp_move" %>
+    <% elsif session["space#{id}"] == "comp" %>
       <div class="space o-filled" id="<%= id %>"></div>
     <% else %>
       <form action="/" method="post">
         <div class="space" id="<%= id %>">
-          <button name="space<%= id %>" value="user_move" type="submit" ></button>
+          <button name="space<%= id %>" value="user" type="submit" ></button>
         </div>
       </form>
     <% end %>
