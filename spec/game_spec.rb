@@ -18,7 +18,7 @@ describe "The tic tac toe game" do
   end
 end
 
-describe "the computer player" do
+describe BestComputerMove do
   let(:comp) {BestComputerMove.new({}, 1)}
 
   it "should exist" do
@@ -36,7 +36,7 @@ describe "the computer player" do
   end
 end
 
-describe "FirstTurn" do
+describe FirstTurn do
   let(:first_turn_middle) {FirstTurn.new({:space5 => "user"})}
   let(:first_turn_top_left) {FirstTurn.new({:space1 => "user"})}
 
@@ -50,3 +50,4 @@ describe "FirstTurn" do
     end
   end
 end
+
