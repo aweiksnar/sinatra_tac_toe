@@ -40,6 +40,11 @@ describe FirstTurn do
   let(:first_turn_middle) {FirstTurn.new({:space5 => "user"})}
   let(:first_turn_top_left) {FirstTurn.new({:space1 => "user"})}
 
+  it "should exist" do
+    expect(:first_turn_middle).not_to be_nil
+    expect(:first_turn_top_left).not_to be_nil
+  end
+
   describe "#get_best_move" do
     it "top left if its open" do
       expect(first_turn_middle.get_best_move).to eq(1)
@@ -50,4 +55,3 @@ describe FirstTurn do
     end
   end
 end
-
