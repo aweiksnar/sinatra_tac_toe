@@ -33,7 +33,7 @@ class BestComputerMove
     if @move_num == 1
       FirstComputerTurn.new(@board).return_best_move
     elsif @move_num == 3
-      SecondComputerTurn.new(@board).return_best_move
+      SecondComputerTurn.new(@board).return_best_move  # add elsif winoorpp like other method, then else random
     end
   end
 end
@@ -44,7 +44,7 @@ class FirstComputerTurn
   end
 
   def return_best_move
-    @board[:space5] ? 1 : 5
+    @board[:space5] ? 1 : 5   # Comp should go in middle if user goes in corner, and corner if middle
   end
 end
 
@@ -92,15 +92,7 @@ class SecondComputerTurn
     if win_or_prevent("user")
       win_or_prevent("user")
     elsif @board["space5"] == "comp"
-      fourth_move_traps.each do |set|
-        return set[0] if @board["space#{set[1]}"] == "user" && @board["space#{set[2]}"] == "user"
-      end
-
-      diagonal_forks.each do |set|
-        return set[0] if @board["space#{set[1]}"] == "user" && @board["space#{set[2]}"] == "user"
-      end
-
-      outer_middle_pairs.each do |set|
+      board_layouts.each do |set|
         return set[0] if @board["space#{set[1]}"] == "user" && @board["space#{set[2]}"] == "user"
       end
     else
@@ -108,7 +100,11 @@ class SecondComputerTurn
     end
   end
 
-  private
+  private      # add all possible moves to loop through so it can be one loop (concat the arrays)
+
+  def board_layouts
+    fourth_move_traps + diagonal_forks + outer_middle_pairs
+  end
 
   def fourth_move_traps
     [         #array[0] is optimal move for computer
@@ -141,3 +137,5 @@ class SecondComputerTurn
     ]
   end
 end
+
+# make 'random move generator go through logical move steps'
