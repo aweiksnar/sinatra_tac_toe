@@ -11,8 +11,8 @@ get "/" do
 end
 
 post "/" do
-  (1..9).each do |num|
-    session["space#{num}"] = params["space#{num}"] unless session["space#{num}"]
+  (1..9).each do |id|
+    session["space#{id}"] = params["space#{id}"] unless session["space#{id}"]
   end
   settings.number_of_moves += 1
 
@@ -44,7 +44,7 @@ class FirstComputerTurn
   end
 
   def return_best_move
-    @board[:space5] ? 1 : 5   # Comp should go in middle if user goes in corner, and corner if middle
+    @board[:space5] ? 1 : 5
   end
 end
 
@@ -100,7 +100,7 @@ class SecondComputerTurn
     end
   end
 
-  private      # add all possible moves to loop through so it can be one loop (concat the arrays)
+  private
 
   def board_layouts
     fourth_move_traps + diagonal_forks + outer_middle_pairs
