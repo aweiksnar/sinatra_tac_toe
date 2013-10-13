@@ -57,16 +57,7 @@ module Helpers
   end
 
   def all_the_rows
-    [
-      [1,2,3],
-      [4,5,6],
-      [7,8,9],
-      [1,4,7],
-      [2,5,8],
-      [3,6,9],
-      [1,5,9],
-      [7,5,3]
-    ]
+    [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[7,5,3]]
   end
 end
 
@@ -128,34 +119,15 @@ class SecondComputerTurn
   end
 
   def fourth_move_traps
-    [         #array[0] is optimal move for computer
-      [2,4,9],
-      [2,6,7],
-      [4,2,9],
-      [4,3,8],
-      [6,1,8],
-      [6,2,7],
-      [8,1,6],
-      [8,3,4]
-    ]
+    [[2,4,9],[2,6,7],[4,2,9],[4,3,8],[6,1,8],[6,2,7],[8,1,6],[8,3,4]]
   end
 
   def diagonal_forks
-    [         #array[0] is optimal move for computer
-      [6,1,9],
-      [6,3,7]
-    ]
+    [[6,1,9],[6,3,7]]
   end
 
   def outer_middle_pairs
-    [         #array[0] is optimal move for computer
-      [3,2,6],
-      [3,2,8],
-      [1,2,4],
-      [3,4,6],
-      [7,4,8],
-      [9,6,8]
-    ]
+    [[3,2,6],[3,2,8],[1,2,4],[3,4,6],[7,4,8],[9,6,8]]
   end
 end
 
