@@ -7,16 +7,19 @@ class SecondComputerTurn
   def return_best_move
     if win_or_prevent("user")
       win_or_prevent("user")
-    elsif @board["space5"] == "comp"
-      board_layouts.each do |set|
-        return set[0] if @board["space#{set[1]}"] == "user" && @board["space#{set[2]}"] == "user"
-      end
     else
-      7
+      computer_picked_middle_first
     end
   end
 
   private
+
+  def computer_picked_middle_first
+    board_layouts.each do |set|
+      return set[0] if @board["space#{set[1]}"] == "user" && @board["space#{set[2]}"] == "user"
+    end
+    7 #alternate move
+  end
 
   def board_layouts
     fourth_move_traps + diagonal_forks + outer_middle_pairs
