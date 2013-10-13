@@ -9,11 +9,15 @@
     <% elsif session["space#{id}"] == "comp" %>
       <div class="space o-filled" id="<%= id %>"></div>
     <% else %>
-      <form action="/" method="post">
-        <div class="space" id="<%= id %>">
-          <button name="space<%= id %>" value="user" type="submit" ></button>
-        </div>
-      </form>
+      <% if @game_over == true %>
+        <div class="space" id="<%= id %>"></div>
+      <% else %>
+        <form action="/" method="post">
+          <div class="space" id="<%= id %>">
+            <button name="space<%= id %>" value="user" type="submit" ></button>
+          </div>
+        </form>
+        <% end %>
     <% end %>
 
     <% if id == 3 || id == 6 || id == 9 %>
@@ -21,6 +25,12 @@
     <% end %>
   <% end %>
 </div>
+
+<% if @game_over == true %>
+  <h1>Game Over</h1>
+<% end %>
+
+<%= settings.number_of_moves %>
 
 <script>
   for (var id = 1; id <= 9; id++) {

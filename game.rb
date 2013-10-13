@@ -20,35 +20,12 @@ post "/" do
   session["space#{id}"] = "comp"
 
   settings.number_of_moves += 1
+
+  @game_over = MoveRouter.new(session, settings.number_of_moves).game_over?
+
   erb :board
 end
 
-class MoveRouter
-  def initialize(board_hash, number_of_moves)
-    @board = board_hash
-    @move_num = number_of_moves
-  end
-
-  def fetch_best_move
-    if @move_num == 1
-      FirstComputerTurn.new(@board).return_best_move
-    elsif @move_num == 3
-      SecondComputerTurn.new(@board).return_best_move
-    else
-      RemainingComputerTurn.new(@board).return_best_move
-    end
-  end
-end
-
-class FirstComputerTurn
-  def initialize(board_hash)
-    @board = board_hash
-  end
-
-  def return_best_move
-    @board[:space5] ? 1 : 5
-  end
-end
 
 module Helpers
   def win_or_prevent(player)
@@ -70,6 +47,15 @@ module Helpers
 
   private
 
+  def three_in_a_row?
+    all_the_rows.each do |row|
+      if @board["space#{row[0]}"] == "comp" && @board["space#{row[1]}"] == "comp" && @board["space#{row[2]}"] == "comp"
+        return true ; break
+      end
+    end
+    false
+  end
+
   def all_the_rows
     [
       [1,2,3],
@@ -83,6 +69,39 @@ module Helpers
     ]
   end
 end
+
+class MoveRouter
+  include Helpers
+  def initialize(board_hash, number_of_moves)
+    @board = board_hash
+    @move_num = number_of_moves
+  end
+
+  def fetch_best_move
+    if @move_num == 1
+      FirstComputerTurn.new(@board).return_best_move
+    elsif @move_num == 3
+      SecondComputerTurn.new(@board).return_best_move
+    else
+      RemainingComputerTurn.new(@board).return_best_move
+    end
+  end
+
+  def game_over?
+    three_in_a_row? || @move_num > 8
+  end
+end
+
+class FirstComputerTurn
+  def initialize(board_hash)
+    @board = board_hash
+  end
+
+  def return_best_move
+    @board[:space5] ? 1 : 5
+  end
+end
+
 
 class SecondComputerTurn
   include Helpers

@@ -20,18 +20,29 @@ end
 
 describe MoveRouter do
   let(:comp) {MoveRouter.new({}, 1)}
+  let(:comp_win) {MoveRouter.new({"space1" => "comp", "space5" => "comp", "space9" => "comp" ,"space2" => "user"}, 4)}
 
   it "should exist" do
     expect(comp).not_to be_nil
   end
 
   describe "#fetch_best_move" do
-    it "should exist" do
-      expect(comp).to respond_to(:fetch_best_move)
-    end
+    it{expect(comp).to respond_to(:fetch_best_move)}
 
     it "should return a number" do
       expect(comp.fetch_best_move.is_a? Fixnum).to eq(true)
+    end
+  end
+
+  describe "#game_over?" do
+    it{expect(comp).to respond_to(:game_over?)}
+
+    it "should not return true if the game is not over" do
+      expect(comp.game_over?).not_to eq(true)
+    end
+
+    it "should return true if there are three in a row" do
+      expect(comp_win.game_over?).to eq(true)
     end
   end
 end
@@ -115,14 +126,14 @@ describe Helpers do
     end
   end
 
-  let(:winners){TestClass.new({})}
+  let(:helpers_test_class){TestClass.new({})}
 
   it "should exist" do
-    expect(winners).not_to be_nil
+    expect(helpers_test_class).not_to be_nil
   end
 
   describe "#win_or_prevent" do
-    it {expect(winners).to respond_to(:win_or_prevent)}
+    it {expect(helpers_test_class).to respond_to(:win_or_prevent)}
 
     it "should return a space to move in if there are two x's or o's in a row" do
       expect(TestClass.new({"space1" => "user", "space2" => "user"}).win_or_prevent("user")).to eq(3)
