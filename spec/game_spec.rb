@@ -37,8 +37,8 @@ describe MoveRouter do
   describe "#game_over?" do
     it{expect(comp).to respond_to(:game_over?)}
 
-    it "should not return true if the game is not over" do
-      expect(comp.game_over?).not_to eq(true)
+    it "should return false if the game is not over" do
+      expect(comp.game_over?).to eq(false)
     end
 
     it "should return true if there are three in a row" do
