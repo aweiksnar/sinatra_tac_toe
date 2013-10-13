@@ -70,7 +70,7 @@ describe SecondComputerTurn do
     end
 
     it "should move in the bottom-left if comp opened top-left and user went in the middle" do
-      expect(second_turn_after_top_left_open.return_best_move).to eq(9)
+      expect(second_turn_after_top_left_open.return_best_move).to eq(7)
     end
 
     describe "when computer went in middle space on previous turn" do
@@ -139,6 +139,45 @@ describe CompleteRow do
       end
     end
   end
+
+  describe "#open" do
+    it "should return false if space is occupied by user or comp" do
+      expect(TestClass.new({}).open?("comp")).to eq(false)
+      expect(TestClass.new({}).open?("user")).to eq(false)
+    end
+
+    it "should return true if the space is not taken by user or comp" do
+      expect(TestClass.new({}).open?("test")).to eq(true)
+    end
+  end
+end
+
+describe RemainingComputerTurn do
+  let(:remaining_turn){RemainingComputerTurn.new({})}
+  let(:remaining_turn_comp_win){RemainingComputerTurn.new({"space1" => "comp", "space2" => "comp", })}
+  let(:remaining_turn_user_block){RemainingComputerTurn.new({"space1" => "user", "space5" => "user"})}
+  let(:remaining_turn_alt_move){RemainingComputerTurn.new({"space1" => "user", "space2" => "comp", "space3" => "user", "space4" => "comp", "space5" => "user", "space6" => "comp",  "space7" => "user", "space9" => "comp"})}
+
+  it "should exist" do
+    expect(remaining_turn).not_to be_nil
+  end
+
+  describe "#return_best_move" do
+    it {expect(remaining_turn).to respond_to(:return_best_move)}
+
+    it "should win the game if it can" do
+      expect(remaining_turn_comp_win.return_best_move).to eq(3)
+    end
+
+    it "should prevent the computer from winning the game if it can" do
+      expect(remaining_turn_user_block.return_best_move).to eq(9)
+    end
+
+    it "should move in an open space if there is nothing to defend" do
+      expect(remaining_turn_alt_move.return_best_move).to eq(8)
+    end
+  end
+
 end
 
 

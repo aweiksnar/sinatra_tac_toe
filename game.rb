@@ -33,7 +33,9 @@ class BestComputerMove
     if @move_num == 1
       FirstComputerTurn.new(@board).return_best_move
     elsif @move_num == 3
-      SecondComputerTurn.new(@board).return_best_move  # add elsif winoorpp like other method, then else random
+      SecondComputerTurn.new(@board).return_best_move
+    else
+      RemainingComputerTurn.new(@board).return_best_move
     end
   end
 end
@@ -62,11 +64,11 @@ module CompleteRow
     nil
   end
 
-  private
-
   def open?(space)
     space != "user" && space != "comp"
   end
+
+  private
 
   def all_the_rows
     [
@@ -96,7 +98,7 @@ class SecondComputerTurn
         return set[0] if @board["space#{set[1]}"] == "user" && @board["space#{set[2]}"] == "user"
       end
     else
-      9
+      7
     end
   end
 
@@ -138,4 +140,28 @@ class SecondComputerTurn
   end
 end
 
-# make 'random move generator go through logical move steps'
+class RemainingComputerTurn
+  include CompleteRow
+
+  def initialize(board_hash)
+    @board = board_hash
+  end
+
+  def return_best_move
+    if win_or_prevent("comp")
+      win_or_prevent("comp")
+    elsif win_or_prevent("user")
+      win_or_prevent("user")
+    else
+      alt_move_options.each do |id|
+        return id if open?(@board["space#{id}"])
+      end
+    end
+  end
+
+  private
+
+  def alt_move_options
+    [5,1,3,7,9,2,4,6,8]
+  end
+end
