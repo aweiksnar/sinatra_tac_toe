@@ -50,7 +50,7 @@ class FirstComputerTurn
   end
 end
 
-module CompleteRow
+module Helpers
   def win_or_prevent(player)
     all_the_rows.each do |row|
       if @board["space#{row[0]}"] == player && @board["space#{row[1]}"] == player && open?(@board["space#{row[2]}"])
@@ -85,7 +85,7 @@ module CompleteRow
 end
 
 class SecondComputerTurn
-  include CompleteRow
+  include Helpers
   def initialize(board_hash)
     @board = board_hash
   end
@@ -141,7 +141,7 @@ class SecondComputerTurn
 end
 
 class RemainingComputerTurn
-  include CompleteRow
+  include Helpers
 
   def initialize(board_hash)
     @board = board_hash

@@ -101,9 +101,9 @@ describe SecondComputerTurn do
   end
 end
 
-describe CompleteRow do
+describe Helpers do
   class TestClass
-    include CompleteRow
+    include Helpers
     attr_accessor :board
 
     def initialize(board_hash)
