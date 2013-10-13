@@ -26,7 +26,6 @@ post "/" do
   erb :board
 end
 
-
 module Helpers
   def win_or_prevent(player)
     all_the_rows.each do |row|
@@ -46,15 +45,6 @@ module Helpers
   end
 
   private
-
-  def three_in_a_row?
-    all_the_rows.each do |row|
-      if @board["space#{row[0]}"] == "comp" && @board["space#{row[1]}"] == "comp" && @board["space#{row[2]}"] == "comp"
-        return true ; break
-      end
-    end
-    false
-  end
 
   def all_the_rows
     [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[7,5,3]]
@@ -80,6 +70,17 @@ class MoveRouter
 
   def game_over?
     three_in_a_row? || @move_num > 8
+  end
+
+  private
+
+  def three_in_a_row?
+    all_the_rows.each do |row|
+      if @board["space#{row[0]}"] == "comp" && @board["space#{row[1]}"] == "comp" && @board["space#{row[2]}"] == "comp"
+        return true ; break
+      end
+    end
+    false
   end
 end
 
