@@ -16,14 +16,14 @@ post "/" do
   end
   settings.number_of_moves += 1
 
-  id = BestComputerMove.new(session, settings.number_of_moves).fetch_best_move
+  id = MoveRouter.new(session, settings.number_of_moves).fetch_best_move
   session["space#{id}"] = "comp"
 
   settings.number_of_moves += 1
   erb :board
 end
 
-class BestComputerMove
+class MoveRouter
   def initialize(board_hash, number_of_moves)
     @board = board_hash
     @move_num = number_of_moves

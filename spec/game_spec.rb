@@ -18,8 +18,8 @@ describe "The tic tac toe game" do
   end
 end
 
-describe BestComputerMove do
-  let(:comp) {BestComputerMove.new({}, 1)}
+describe MoveRouter do
+  let(:comp) {MoveRouter.new({}, 1)}
 
   it "should exist" do
     expect(comp).not_to be_nil
@@ -177,7 +177,4 @@ describe RemainingComputerTurn do
       expect(remaining_turn_alt_move.return_best_move).to eq(8)
     end
   end
-
 end
-
-
