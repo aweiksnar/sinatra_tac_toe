@@ -1,6 +1,5 @@
 class RemainingComputerTurn
   include Helpers
-
   def initialize(board_hash)
     @board = board_hash
   end

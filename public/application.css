@@ -1,9 +1,12 @@
 html {
-  font-family: 'Raleway',Trebuchet MS, sans-serif;
+  font-family: 'Raleway', Trebuchet MS, sans-serif;
   text-align: center;
 }
 
-a {text-decoration: none;}
+a {
+  text-decoration: none;
+  color: #0093cc;
+}
 
 #board {
   margin: 0 auto;
