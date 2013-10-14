@@ -14,7 +14,7 @@ class SecondComputerTurn
     board_layouts.each do |set|
       return set[0] if filled?(set[1], "user") && filled?(set[2], "user")
     end
-    7 #alternate move
+    7 #alternate move - make new method for comp start
   end
 
   def board_layouts
