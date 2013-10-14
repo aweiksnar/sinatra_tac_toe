@@ -5,7 +5,7 @@ class SecondComputerTurn
   end
 
   def return_best_move
-    win_or_prevent("user") || computer_picked_middle_first
+    win_or_prevent("user") || computer_picked_middle_first || play_an_open_corner
   end
 
   private
@@ -14,11 +14,19 @@ class SecondComputerTurn
     board_layouts.each do |set|
       return set[0] if filled?(set[1], "user") && filled?(set[2], "user")
     end
-    7 #alternate move - make new method for comp start
+    false
+  end
+
+  def play_an_open_corner
+    corners.each {|corner| return corner if open?(corner)}
   end
 
   def board_layouts
     fourth_move_traps + diagonal_forks + outer_middle_pairs
+  end
+
+  def corners
+    [9,7,3,1]
   end
 
   def fourth_move_traps

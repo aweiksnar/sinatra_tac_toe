@@ -18,6 +18,7 @@ get "/" do
     session["space#{id}"] = "comp"
     settings.number_of_moves += 1
   end
+
   erb :board
 end
 
@@ -25,6 +26,7 @@ post "/" do
   (1..9).each do |id|
     session["space#{id}"] = params["space#{id}"] unless session["space#{id}"]
   end
+
   settings.number_of_moves += 1
 
   id = MoveRouter.new(session, settings.number_of_moves).fetch_best_move
