@@ -17,7 +17,7 @@ class RemainingComputerTurn
 
   def make_alternate_move
     alt_move_options.each do |id|
-      return id if open?(@board["space#{id}"])
+      return id if open?(id)
     end
   end
 

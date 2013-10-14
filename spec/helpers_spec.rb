@@ -14,7 +14,7 @@ describe Helpers do
     end
   end
 
-  let(:helpers_test_class){TestClass.new({"space0" => "test_player"})}
+  let(:helpers_test_class){TestClass.new({"space0" => "test_player", "space1" => "user", "space2" => "comp"})}
 
   it "should exist" do
     expect(helpers_test_class).not_to be_nil
@@ -41,12 +41,12 @@ describe Helpers do
 
   describe "#open" do
     it "should return false if space is occupied by user or comp" do
-      expect(TestClass.new({}).open?("comp")).to eq(false)
-      expect(TestClass.new({}).open?("user")).to eq(false)
+      expect(helpers_test_class.open?(1)).to eq(false)
+      expect(helpers_test_class.open?(2)).to eq(false)
     end
 
     it "should return true if the space is not taken by user or comp" do
-      expect(TestClass.new({}).open?("test")).to eq(true)
+      expect(helpers_test_class.open?(0)).to eq(true)
     end
   end
 
