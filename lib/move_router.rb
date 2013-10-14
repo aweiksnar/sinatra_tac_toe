@@ -22,11 +22,11 @@ class MoveRouter
   private
 
   def three_in_a_row?
-    all_the_rows.each do |row|
-      if filled?(row[0], "comp") && filled?(row[1], "comp") && filled?(row[2], "comp")
-        return true ; break
-      end
-    end
+    all_the_rows.each {|row| return true if all_spaces_filled(row, "comp")}
     false
+  end
+
+  def all_spaces_filled(row, player)
+    filled?(row[0], "comp") && filled?(row[1], "comp") && filled?(row[2], "comp")
   end
 end
