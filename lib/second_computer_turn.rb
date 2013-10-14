@@ -11,9 +11,7 @@ class SecondComputerTurn
   private
 
   def computer_picked_middle_first
-    board_layouts.each do |set|
-      return set[0] if filled?(set[1], "user") && filled?(set[2], "user")
-    end
+    board_layouts.each {|set| return set[0] if filled?(set[1], "user") && filled?(set[2], "user")}
     false
   end
 
