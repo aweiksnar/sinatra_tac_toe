@@ -1,4 +1,4 @@
-<div id="board" >
+<div id="board">
   <% (1..9).each do |id| %>
     <% if id == 1 || id == 4 || id == 7 %>
       <div class="row">
@@ -28,6 +28,7 @@
 
 <% if @game_over %>
   <h1>Game Over</h1>
+  <a href="/"><h2>New Game?</h2></a>
 <% end %>
 
 <script>
