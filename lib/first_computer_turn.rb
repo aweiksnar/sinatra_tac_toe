@@ -5,7 +5,7 @@ class FirstComputerTurn
   end
 
   def return_best_move
-    comp_went_first ? corner_or_middle : open_board
+    comp_went_first ? corner_or_middle : top_left
   end
 
   private
@@ -18,7 +18,7 @@ class FirstComputerTurn
     @board[:space5] ? 1 : 5
   end
 
-  def open_board
+  def top_left
     1
   end
 end
