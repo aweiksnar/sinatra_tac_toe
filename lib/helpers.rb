@@ -1,15 +1,7 @@
 module Helpers
   def win_or_prevent(player)
-    all_the_rows.each do |row|
-      if filled?(row[0], player) && filled?(row[1], player) && open?(row[2])
-        return row[2]; break
-      elsif filled?(row[0], player) && filled?(row[2], player) && open?(row[1])
-        return row[1]; break
-      elsif filled?(row[1], player) && filled?(row[2], player) && open?(row[0])
-        return row[0]; break
-      end
-    end
-    nil
+    all_the_rows.each {|row| @move_id = complete_row(row, player)}
+    @move_id
   end
 
   def open?(id)
@@ -20,7 +12,20 @@ module Helpers
     @board["space#{id}"] == player
   end
 
-  private  # make row_needs_to_be_completed(player, args || rows) || complete_possible_rows(player)
+  private
+
+  def complete_row(row, player)
+    row_order_combos.each { |set| @id = row[set[2]] if any_doubles?(row, set, player)}
+    @id
+  end
+
+  def any_doubles?(row, set, player)
+    filled?(row[set[0]], player) && filled?(row[set[1]], player) && open?(row[set[2]])
+  end
+
+  def row_order_combos
+    [[0,1,2],[0,2,1],[1,2,0]]
+  end
 
   def all_the_rows
     [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[7,5,3]]
