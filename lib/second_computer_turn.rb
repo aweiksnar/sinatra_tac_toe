@@ -16,7 +16,7 @@ class SecondComputerTurn
 
   def computer_picked_middle_first
     board_layouts.each do |set|
-      return set[0] if @board["space#{set[1]}"] == "user" && @board["space#{set[2]}"] == "user"
+      return set[0] if filled?(set[1], "user") && filled?(set[2], "user")
     end
     7 #alternate move
   end

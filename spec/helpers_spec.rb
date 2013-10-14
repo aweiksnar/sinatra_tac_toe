@@ -14,7 +14,7 @@ describe Helpers do
     end
   end
 
-  let(:helpers_test_class){TestClass.new({})}
+  let(:helpers_test_class){TestClass.new({"space0" => "test_player"})}
 
   it "should exist" do
     expect(helpers_test_class).not_to be_nil
@@ -47,6 +47,19 @@ describe Helpers do
 
     it "should return true if the space is not taken by user or comp" do
       expect(TestClass.new({}).open?("test")).to eq(true)
+    end
+  end
+
+  describe "#filled?" do
+    it {expect(helpers_test_class).to respond_to(:filled?)}
+
+    it "should return true if a player has moved in that space" do
+      expect(helpers_test_class.filled?(0, "test_player")).to eq(true)
+    end
+
+    it "should return false if a player has not moved in that space" do
+      expect(helpers_test_class.filled?(1, "test_player")).to eq(false)
+      expect(helpers_test_class.filled?(0, "test_player_copy")).to eq(false)
     end
   end
 end

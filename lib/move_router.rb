@@ -23,7 +23,7 @@ class MoveRouter
 
   def three_in_a_row?
     all_the_rows.each do |row|
-      if @board["space#{row[0]}"] == "comp" && @board["space#{row[1]}"] == "comp" && @board["space#{row[2]}"] == "comp"
+      if filled?(row[0], "comp") && filled?(row[1], "comp") && filled?(row[2], "comp")
         return true ; break
       end
     end
