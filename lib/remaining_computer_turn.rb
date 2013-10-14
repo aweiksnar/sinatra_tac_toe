@@ -15,9 +15,7 @@ class RemainingComputerTurn
   private
 
   def make_alternate_move
-    alt_move_options.each do |id|
-      return id if open?(id)
-    end
+    alt_move_options.each {|id| return id if open?(id)}
   end
 
   def alt_move_options
