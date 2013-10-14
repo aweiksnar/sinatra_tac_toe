@@ -5,11 +5,7 @@ class RemainingComputerTurn
   end
 
   def return_best_move
-    if win_or_prevent("comp") || win_or_prevent("user")
-      win_or_prevent("comp") || win_or_prevent("user")
-    else
-      make_alternate_move
-    end
+    win_or_prevent("comp") || win_or_prevent("user") || make_alternate_move
   end
 
   private
