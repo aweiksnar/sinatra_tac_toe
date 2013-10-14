@@ -5,11 +5,7 @@ class SecondComputerTurn
   end
 
   def return_best_move
-    if win_or_prevent("user")
-      win_or_prevent("user")
-    else
-      computer_picked_middle_first
-    end
+    win_or_prevent("user") || computer_picked_middle_first
   end
 
   private
