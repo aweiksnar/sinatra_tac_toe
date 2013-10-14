@@ -6,9 +6,9 @@ class MoveRouter
   end
 
   def fetch_best_move
-    if @move_num == 1
-      FirstComputerTurn.new(@board).return_best_move
-    elsif @move_num == 3
+    if @move_num < 2
+      FirstComputerTurn.new(@board, @move_num).return_best_move
+    elsif @move_num < 4
       SecondComputerTurn.new(@board).return_best_move
     else
       RemainingComputerTurn.new(@board).return_best_move

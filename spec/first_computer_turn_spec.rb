@@ -1,8 +1,9 @@
 require "spec_helper"
 
 describe FirstComputerTurn do
-  let(:first_turn_top_left) {FirstComputerTurn.new({:space1 => "user"})}
-  let(:first_turn_center) {FirstComputerTurn.new({:space5 => "user"})}
+  let(:first_turn_top_left) {FirstComputerTurn.new({:space1 => "user"},1)}
+  let(:first_turn_center) {FirstComputerTurn.new({:space5 => "user"},1)}
+  let(:first_turn_open_board){FirstComputerTurn.new({},0)}
 
   it "should exist" do
     expect(first_turn_center).not_to be_nil
@@ -10,12 +11,20 @@ describe FirstComputerTurn do
   end
 
   describe "#return_best_move" do
-    it "center if it's open" do
-      expect(first_turn_top_left.return_best_move).to eq(5)
+    describe "if user went first" do
+      it "center if it's open" do
+        expect(first_turn_top_left.return_best_move).to eq(5)
+      end
+
+      it "top left corner if center is filled" do
+        expect(first_turn_center.return_best_move).to eq(1)
+      end
     end
 
-    it "top left corner if center is filled" do
-      expect(first_turn_center.return_best_move).to eq(1)
+    describe "if computer goes first" do
+      it "should go in the corner" do
+        expect(first_turn_open_board.return_best_move).to eq(1)
+      end
     end
   end
 end
