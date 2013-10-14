@@ -15,7 +15,7 @@ module Helpers
   private
 
   def complete_row(row, player)
-    row_order_combos.each { |set| @id = row[set[2]] if any_doubles?(row, set, player)}
+    row_order_combos.each {|set| @id = row[set[2]] if any_doubles?(row, set, player)}
     @id
   end
 
