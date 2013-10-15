@@ -2,8 +2,6 @@ require "spec_helper"
 
 describe SecondComputerTurn do
   let(:second_turn) {SecondComputerTurn.new({})}
-  let(:second_turn_after_top_left_open) {SecondComputerTurn.new({"space1" => "comp", "space5" => "user" })}
-  let(:second_turn_after_top_left_open_alt) {SecondComputerTurn.new({"space1" => "comp", "space9" => "user" })}
 
   it "should exist" do
     expect(second_turn).not_to be_nil
@@ -15,7 +13,10 @@ describe SecondComputerTurn do
     end
 
     it "should move in a corner if comp opened top-left and user went in the middle" do
+      second_turn_after_top_left_open = SecondComputerTurn.new({"space1" => "comp", "space5" => "user" })
       expect(second_turn_after_top_left_open.return_best_move).to eq(9)
+
+      second_turn_after_top_left_open_alt = SecondComputerTurn.new({"space1" => "comp", "space9" => "user" })
       expect(second_turn_after_top_left_open_alt.return_best_move).to eq(7)
     end
 
