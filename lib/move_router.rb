@@ -6,13 +6,7 @@ class MoveRouter
   end
 
   def fetch_best_move
-    if @move_num < 2
-      FirstComputerTurn.new(@board, @move_num).return_best_move
-    elsif @move_num < 4
-      SecondComputerTurn.new(@board).return_best_move
-    else
-      RemainingComputerTurn.new(@board).return_best_move
-    end
+    first_comp_move || second_comp_move || remaining_comp_move
   end
 
   def game_over?
@@ -20,6 +14,18 @@ class MoveRouter
   end
 
   private
+
+  def first_comp_move
+    FirstComputerTurn.new(@board, @move_num).return_best_move if @move_num < 2
+  end
+
+  def second_comp_move
+    SecondComputerTurn.new(@board).return_best_move if @move_num < 4
+  end
+
+  def remaining_comp_move
+     RemainingComputerTurn.new(@board).return_best_move
+  end
 
   def three_in_a_row?
     all_the_rows.each {|row| return true if all_spaces_filled(row, "comp")}
