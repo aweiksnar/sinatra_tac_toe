@@ -15,6 +15,21 @@ describe MoveRouter do
     it "should return a number" do
       expect(comp.fetch_best_move.is_a? Fixnum).to eq(true)
     end
+
+    it "should return the first move if move num is less than 2" do
+      move = MoveRouter.new({},0).fetch_best_move
+      expect(move).to eq(1)
+    end
+
+    it "should return the second comp move if move num is less than 4" do
+      move = MoveRouter.new({"space4" => "user", "space9" => "user", "space5" => "comp"}, 3).fetch_best_move
+      expect(move).to eq(2)
+    end
+
+    it "should return a non first or second comp move if move num is >= 4" do
+      move = MoveRouter.new({"space4" => "user", "space9" => "user", "space5" => "comp", "space2" => "comp"}, 4).fetch_best_move
+      expect(move).to eq(8)
+    end
   end
 
   describe "#game_over?" do
