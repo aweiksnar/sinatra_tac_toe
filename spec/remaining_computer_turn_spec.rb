@@ -2,7 +2,6 @@ require "spec_helper"
 
 describe RemainingComputerTurn do
   let(:remaining_turn){RemainingComputerTurn.new({})}
-  let(:remaining_turn_alt_move){RemainingComputerTurn.new({"space1" => "user", "space2" => "comp", "space3" => "user", "space4" => "comp", "space5" => "user", "space6" => "comp",  "space7" => "user", "space9" => "comp"})}
 
   it "should exist" do
     expect(remaining_turn).not_to be_nil
@@ -28,7 +27,8 @@ describe RemainingComputerTurn do
     end
 
     it "should move in an open space if there is nothing to defend" do
-      expect(remaining_turn_alt_move.return_best_move).to eq(8)
+      turn = RemainingComputerTurn.new({"space1" => "user", "space2" => "comp", "space3" => "user", "space4" => "comp", "space5" => "user", "space6" => "comp",  "space7" => "user", "space9" => "comp"})
+      expect(turn.return_best_move).to eq(8)
     end
   end
 end
