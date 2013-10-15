@@ -2,8 +2,6 @@ require "spec_helper"
 
 describe MoveRouter do
   let(:comp) {MoveRouter.new({}, 1)}
-  let(:comp_win) {MoveRouter.new({"space1" => "comp", "space5" => "comp", "space9" => "comp" ,"space2" => "user"}, 4)}
-  let(:comp_win_alt) {MoveRouter.new({"space4" => "comp", "space5" => "comp", "space6" => "comp" ,"space2" => "user"}, 4)}
 
   it "should exist" do
     expect(comp).not_to be_nil
@@ -40,7 +38,10 @@ describe MoveRouter do
     end
 
     it "should return true if there are three in a row" do
+      comp_win = MoveRouter.new({"space1" => "comp", "space5" => "comp", "space9" => "comp" ,"space2" => "user"}, 4)
       expect(comp_win.game_over?).to eq(true)
+
+      comp_win_alt = MoveRouter.new({"space4" => "comp", "space5" => "comp", "space6" => "comp" ,"space2" => "user"}, 4)
       expect(comp_win_alt.game_over?).to eq(true)
     end
   end

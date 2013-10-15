@@ -34,7 +34,6 @@ module Sinatra
     def assign_user_move_to_board
       (1..9).each {|id| session["space#{id}"] = params["space#{id}"] unless session["space#{id}"]}
     end
-
   end
   helpers GameController
 end
