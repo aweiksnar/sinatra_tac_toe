@@ -1,5 +1,4 @@
 require "sinatra"
-require "sinatra/reloader" if development?
 
 Dir["./lib/*.rb"].each {|file| require file }
 
