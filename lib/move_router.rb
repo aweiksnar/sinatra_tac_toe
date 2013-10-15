@@ -24,7 +24,7 @@ class MoveRouter
   end
 
   def remaining_comp_move
-     RemainingComputerTurn.new(@board).return_best_move
+    RemainingComputerTurn.new(@board).return_best_move
   end
 
   def three_in_a_row?
