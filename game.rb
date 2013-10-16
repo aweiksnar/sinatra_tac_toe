@@ -3,7 +3,6 @@ require "sinatra"
 Dir["./lib/*.rb"].each {|file| require file }
 
 enable :sessions
-set :number_of_moves, 0
 set :game_num, 0
 
 get "/" do

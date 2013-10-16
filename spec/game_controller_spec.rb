@@ -9,20 +9,24 @@ describe Sinatra::GameController do
 
   it{expect(Sinatra::GameController).not_to be_nil}
 
+  before(:each) do
+    Sinatra::Sessionography.session = {}
+  end
+
   describe "#alternate_first_move" do
     it "should add 1 to the number of moves" do
       get "/"
-      expect(app.settings.number_of_moves).to eq(0)
+      expect(Sinatra::Sessionography.session[:number_of_moves]).to eq(0)
       get "/"
-      expect(app.settings.number_of_moves).to eq(1)
+      expect(Sinatra::Sessionography.session[:number_of_moves]).to eq(1)
     end
   end
 
   describe "#reset_game" do
     it "should reset the number of moves to 0" do
-      app.settings.number_of_moves = 2
+      Sinatra::Sessionography.session[:number_of_moves] = 2
       get "/"
-      expect(app.settings.number_of_moves).to eq(0)
+      expect(Sinatra::Sessionography.session[:number_of_moves]).to eq(0)
     end
 
     it "should increase the game number by 1" do
@@ -34,9 +38,9 @@ describe Sinatra::GameController do
 
   describe "posting to the board" do
     it "should make a user move and a computer move" do
-      app.settings.number_of_moves = 0
+      Sinatra::Sessionography.session[:number_of_moves] = 0
       post "/"
-      expect(app.settings.number_of_moves).to eq(2)
+      expect(Sinatra::Sessionography.session[:number_of_moves]).to eq(2)
     end
   end
 end
