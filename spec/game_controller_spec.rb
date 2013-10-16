@@ -30,9 +30,11 @@ describe Sinatra::GameController do
     end
 
     it "should increase the game number by 1" do
-      app.settings.game_num = 0
       get "/"
-      expect(app.settings.game_num).to eq(1)
+      expect(Sinatra::Sessionography.session[:game_num]).to eq(1)
+      get "/"
+      expect(Sinatra::Sessionography.session[:game_num]).to eq(2)
+
     end
   end
 

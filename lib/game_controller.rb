@@ -1,16 +1,16 @@
 module Sinatra
   module GameController
     def alternate_first_move
-      if settings.game_num % 2 == 0
+      if session[:game_num] % 2 == 0
         assign_computer_move_to_board
-        session[:number_of_moves] += 1             #  session[:game_num] = 0 unless session[:game_num]
+        session[:number_of_moves] += 1
       end
     end
 
     def reset_game
-      clear_board                    #change to #clear_board which loops 1..9 and sets to nil so gamenum can increment
+      clear_board
       session[:number_of_moves] = 0
-      settings.game_num += 1
+      increment_game_num
     end
 
     def make_user_move(params)
@@ -33,6 +33,11 @@ module Sinatra
     def assign_computer_move_to_board
       id = MoveRouter.new(session, session[:number_of_moves]).fetch_best_move
       session["space#{id}"] = "comp"
+    end
+
+    def increment_game_num
+      session[:game_num] = 0 unless session[:game_num]
+      session[:game_num] += 1
     end
 
     def assign_user_move_to_board
