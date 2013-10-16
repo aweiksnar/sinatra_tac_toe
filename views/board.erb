@@ -41,10 +41,4 @@
       $("#"+id).addClass("middle-space")
     }
   }
-
-  $("#1, #2, #3, #4, #5, #6, #7, #8, #9").click(function() {
-    if (!$(this).hasClass("o-filled") && <%= @game_over == false %>){
-      $(this).addClass("x-filled")
-    }
-  })
 </script>
