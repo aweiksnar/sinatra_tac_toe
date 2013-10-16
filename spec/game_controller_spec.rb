@@ -34,7 +34,6 @@ describe Sinatra::GameController do
       expect(Sinatra::Sessionography.session[:game_num]).to eq(1)
       get "/"
       expect(Sinatra::Sessionography.session[:game_num]).to eq(2)
-
     end
   end
 
