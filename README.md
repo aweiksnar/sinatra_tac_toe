@@ -12,7 +12,7 @@ When the user makes a post request to the board it assigns that space to the use
 
 ###UI
 
-The user lands on the page and is able to start playing right away. Users make their move by clicking on an empty space. Turns alternate between games to make playing multiple games in a row a rapid task.
+The user lands on the page and is able to start playing right away. Users make their move by clicking on an empty space. First tgurns alternate between games to make playing multiple games in a row a rapid task.
 
 ### Unbeatable
 
