@@ -1,6 +1,6 @@
 require "sinatra"
 
-Dir["./lib/*.rb"].each {|file| require file }
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| require file }
 
 enable :sessions
 
