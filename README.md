@@ -10,7 +10,7 @@ Click on an empty space to make your move and the computer will move shortly aft
 
 When the user makes a post request to the board it assigns that space to the user and then talks to the *MoveRouter* to get the responding move from the computer. Depending on how many moves are on the board the *MoveRouter* will ask the *FirstComputerTurn*, *SecondComputerTurn*, or *RemainingComputerTurn* class to calculate the computer's move choice. The *GameController* is responsible for keeping track of the number of moves on the board, move assignment, and alternating who goes first. Data persists through the session hash.
 
-###UI
+###UX
 
 The user lands on the page and is able to start playing right away. Users make their move by clicking on an empty space. First turn alternates between games to make playing multiple games in a row a rapid task.
 
