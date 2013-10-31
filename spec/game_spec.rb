@@ -7,12 +7,12 @@ describe "The tic tac toe game" do
     Sinatra::Application
   end
 
-  it "should have a board layout" do
+  it "has a board layout" do
     get "/"
     expect(last_response).to be_ok
   end
 
-  it "should accept posts to the board" do
+  it "accepts posts to the board" do
     post "/"
     expect(last_response).to be_ok
   end

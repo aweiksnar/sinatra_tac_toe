@@ -5,7 +5,7 @@ describe FirstComputerTurn do
   let(:first_turn_center) {FirstComputerTurn.new({:space5 => "user"},1)}
   let(:first_turn_open_board){FirstComputerTurn.new({},0)}
 
-  it "should exist" do
+  it "exists" do
     expect(first_turn_center).not_to be_nil
     expect(first_turn_top_left).not_to be_nil
   end
@@ -22,7 +22,7 @@ describe FirstComputerTurn do
     end
 
     describe "if computer goes first" do
-      it "should go in the corner" do
+      it "goes in the corner" do
         expect(first_turn_open_board.return_best_move).to eq(1)
       end
     end
