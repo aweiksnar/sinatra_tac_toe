@@ -1,11 +1,6 @@
 require "sinatra"
 
-require "./lib/helpers.rb"
-require "./lib/first_computer_turn.rb"
-require "./lib/remaining_computer_turn.rb"
-require "./lib/second_computer_turn.rb"
-require "./lib/move_router.rb"
-require "./lib/game_controller.rb"
+Dir[File.dirname(__FILE__) + '/lib/**/*.rb'].each {|file| require file }
 
 enable :sessions
 

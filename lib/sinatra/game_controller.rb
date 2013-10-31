@@ -46,4 +46,3 @@ module Sinatra
   end
   helpers GameController
 end
-
