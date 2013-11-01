@@ -14,7 +14,7 @@ describe Helpers do
     end
   end
 
-  let(:helpers_test_class){TestClass.new({"space0" => "test_player", "space1" => "user", "space2" => "comp"})}
+  let(:helpers_test_class){TestClass.new({"0" => "test_player", "1" => "user", "2" => "comp"})}
 
   it "exists" do
     expect(helpers_test_class).not_to be_nil
@@ -24,7 +24,7 @@ describe Helpers do
     it {expect(helpers_test_class).to respond_to(:win_or_prevent)}
 
     it "returns a space to move in if there are two x's or o's in a row" do
-      expect(TestClass.new({"space1" => "user", "space2" => "user"}).win_or_prevent("user")).to eq(3)
+      expect(TestClass.new({"1" => "user", "2" => "user"}).win_or_prevent("user")).to eq(3)
     end
 
     describe "when given two equal spaces it should move in the third" do
@@ -32,7 +32,7 @@ describe Helpers do
       ids.each_with_index do |set, index|
         it "should complete the row (variation: #{index})" do
           TestClass.all_the_rows.each do |row|
-            expect(TestClass.new({"space#{row[set[2]]}" => "user", "space#{row[set[1]]}" => "user"}).win_or_prevent("user")).to eq(row[set[0]])
+            expect(TestClass.new({"#{row[set[2]]}" => "user", "#{row[set[1]]}" => "user"}).win_or_prevent("user")).to eq(row[set[0]])
           end
         end
       end

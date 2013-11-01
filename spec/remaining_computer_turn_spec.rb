@@ -14,20 +14,20 @@ describe RemainingComputerTurn do
 
     all_the_rows.each do |row|
       it "wins the game if it can row:#{row}" do
-        turn = RemainingComputerTurn.new({"space#{row[0]}" => "comp", "space#{row[1]}" => "comp"})
+        turn = RemainingComputerTurn.new({"#{row[0]}" => "comp", "#{row[1]}" => "comp"})
         expect(turn.return_best_move).to eq(row[2])
       end
     end
 
     all_the_rows.each do |row|
       it "prevents the computer from winning the game if it can" do
-        turn = RemainingComputerTurn.new({"space#{row[0]}" => "user", "space#{row[1]}" => "user"})
+        turn = RemainingComputerTurn.new({"#{row[0]}" => "user", "#{row[1]}" => "user"})
         expect(turn.return_best_move).to eq(row[2])
       end
     end
 
     it "moves in an open space if there is nothing to defend" do
-      turn = RemainingComputerTurn.new({"space1" => "user", "space2" => "comp", "space3" => "user", "space4" => "comp", "space5" => "user", "space6" => "comp",  "space7" => "user", "space9" => "comp"})
+      turn = RemainingComputerTurn.new({"1" => "user", "2" => "comp", "3" => "user", "4" => "comp", "5" => "user", "6" => "comp",  "7" => "user", "9" => "comp"})
       expect(turn.return_best_move).to eq(8)
     end
   end

@@ -15,7 +15,7 @@ class FirstComputerTurn
   end
 
   def corner_or_middle
-    @board[:space5] ? 1 : 5
+    @board["5"] ? 1 : 5
   end
 
   def top_left

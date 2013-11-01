@@ -5,11 +5,11 @@ module Helpers
   end
 
   def open?(id)
-    @board["space#{id}"] != "user" && @board["space#{id}"] != "comp"
+    @board["#{id}"] != "user" && @board["#{id}"] != "comp"
   end
 
   def filled?(id, player)
-    @board["space#{id}"] == player
+    @board["#{id}"] == player
   end
 
   private

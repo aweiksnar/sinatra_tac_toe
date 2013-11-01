@@ -27,12 +27,12 @@ module Sinatra
     private
 
     def clear_board
-      (1..9).each {|id| session["space#{id}"] = nil}
+      (1..9).each {|id| session["#{id}"] = nil}
     end
 
     def assign_computer_move_to_board
       id = MoveRouter.new(session, session[:number_of_moves]).fetch_best_move
-      session["space#{id}"] = "comp"
+      session["#{id}"] = "comp"
     end
 
     def increment_game_num
@@ -41,7 +41,7 @@ module Sinatra
     end
 
     def assign_user_move_to_board
-      (1..9).each {|id| session["space#{id}"] = params["space#{id}"] unless session["space#{id}"]}
+      (1..9).each {|id| session["#{id}"] = params["#{id}"] unless session["#{id}"]}
     end
   end
   helpers GameController

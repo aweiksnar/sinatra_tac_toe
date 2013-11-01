@@ -20,12 +20,12 @@ describe MoveRouter do
     end
 
     it "returns the second comp move if move num is less than 4" do
-      move = MoveRouter.new({"space4" => "user", "space9" => "user", "space5" => "comp"}, 3).fetch_best_move
+      move = MoveRouter.new({"4" => "user", "9" => "user", "5" => "comp"}, 3).fetch_best_move
       expect(move).to eq(2)
     end
 
     it "returns a non first or second comp move if move num is >= 4" do
-      move = MoveRouter.new({"space4" => "user", "space9" => "user", "space5" => "comp", "space2" => "comp"}, 4).fetch_best_move
+      move = MoveRouter.new({"4" => "user", "9" => "user", "5" => "comp", "2" => "comp"}, 4).fetch_best_move
       expect(move).to eq(8)
     end
   end
@@ -38,10 +38,10 @@ describe MoveRouter do
     end
 
     it "returns true if there are three in a row" do
-      comp_win = MoveRouter.new({"space1" => "comp", "space5" => "comp", "space9" => "comp" ,"space2" => "user"}, 4)
+      comp_win = MoveRouter.new({"1" => "comp", "5" => "comp", "9" => "comp" ,"2" => "user"}, 4)
       expect(comp_win.game_over?).to eq(true)
 
-      comp_win_alt = MoveRouter.new({"space4" => "comp", "space5" => "comp", "space6" => "comp" ,"space2" => "user"}, 4)
+      comp_win_alt = MoveRouter.new({"4" => "comp", "5" => "comp", "6" => "comp" ,"2" => "user"}, 4)
       expect(comp_win_alt.game_over?).to eq(true)
     end
   end
